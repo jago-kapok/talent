@@ -23,6 +23,18 @@ class Competency extends Model
         return $result;
     }
 
+    public function getEvaluation($employee_id, $competency_status)
+    {
+        $result = DB::table('competency_result')
+                    ->join('competency_detail', 'competency_detail.competency_result_id', 'competency_result.competency_result_id')
+                    ->leftJoin('competency', 'competency.competency_id', 'competency_detail.competency_id')
+                    ->where('competency_result.employee_id', $employee_id)
+                    ->where('competency_result.competency_status', $competency_status)
+                    ->get();
+
+        return $result;
+    }
+
     public function getResult($_pmin, $_pmax, $_cmin, $_cmax)
     {
         $result = DB::table('view_competency_result')

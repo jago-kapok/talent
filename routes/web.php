@@ -25,6 +25,7 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 Route::get('/evaluation', 'EvaluationController@index')->middleware('auth')->name('evaluation');
 Route::get('/evaluation-data', 'EvaluationController@getData')->middleware('auth')->name('evaluation-data');
 Route::get('/evaluation/create/{id}', 'EvaluationController@create')->middleware('auth');
+Route::get('/evaluation/edit/{id}', 'EvaluationController@edit')->middleware('auth')->name('evaluation-edit');
 Route::get('/evaluation/get-history{id}', 'EvaluationController@getHistory')->middleware('auth');
 Route::post('/evaluation', 'EvaluationController@store')->middleware('auth');
 Route::delete('/evaluation/{id}', 'EvaluationController@destroy')->middleware('auth');

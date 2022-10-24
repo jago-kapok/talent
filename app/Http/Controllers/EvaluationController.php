@@ -31,6 +31,10 @@ class EvaluationController extends Controller
                     ->with('employee', $employee);
     }
 
+    /*
+        ==============================================================
+    */
+
     public function create($employee_id)
     {
         $employee   = Employee::findOrFail($employee_id);
@@ -91,6 +95,26 @@ class EvaluationController extends Controller
         ==============================================================
     */
 
+    public function edit($employee_id)
+    {
+        $employee           = Employee::findOrFail($employee_id);
+        $last_competency    = Competency::getEvaluation($employee_id, 2);
+        $competency         = Competency::getEvaluation($employee_id, 1);
+        $last_performance   = Performance::where('employee_id', $employee_id)->orderByDesc('performance_year')->limit(3);
+        $performance        = Performance::where('employee_id', $employee_id)->first();
+
+        return view('contents.update.evaluation')
+                    ->with('employee', $employee)
+                    ->with('last_competency', $last_competency)
+                    ->with('competency', $competency)
+                    ->with('last_performance', $last_performance);
+                    ->with('performance', $performance);
+    }
+
+    /*
+        ==============================================================
+    */
+
     public function destroy($employee_id)
     {
         Competency::where('employee_id', $employee_id)->where('competency_status', 1)->delete();
@@ -136,7 +160,7 @@ class EvaluationController extends Controller
         );
     
         $query = DB::table('view_competency_result')
-                    ->select('view_competency_result.employee_id', 'employee.employee_name', 'position.position_desc', 'view_performance_result.performance_total', 'view_competency_result.competency_percent as competency_total')
+                    ->select('view_competency_result.competency_result_id', 'view_competency_result.employee_id', 'employee.employee_name', 'position.position_desc', 'view_performance_result.performance_total', 'view_competency_result.competency_percent as competency_total')
                     ->join('view_performance_result', 'view_performance_result.employee_id', 'view_competency_result.employee_id')
                     ->join('employee', 'employee.employee_id', '=', 'view_competency_result.employee_id')
                     ->leftJoin('position', 'position.position_id', '=', 'employee.position_id')

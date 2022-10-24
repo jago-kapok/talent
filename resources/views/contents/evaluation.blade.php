@@ -82,6 +82,9 @@
                                 @endif
                             </td>
                             <td>
+                                <a href="{{ route('evaluation-edit', ['id'=>$data->employee_id]) }}" class="btn btn-sm btn-primary">
+                                    <i class="bi-pencil"></i>
+                                </a>
                                 <button type="button" class="btn btn-sm btn-danger" onclick="deleteRow()">
                                     <i class="bi-trash"></i>
                                 </button>

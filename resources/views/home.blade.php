@@ -44,7 +44,7 @@
             </div>
 
             <div class="card p-3 mb-3">
-                <h6 class="text-black-50 mb-2 fw-bold">Pegawai Tiap Jabatan</h6>
+                <h6 class="text-black-50 mb-2 fw-bold">Pegawai Berdasarkan Jabatan</h6>
                 <div class="row">
                     <div class="m-0">
                         <div id="chart_"></div>
@@ -68,7 +68,7 @@
             </div>
 
             <div class="card p-3 mb-3">
-                <h6 class="text-black-50 mb-3 fw-bold">Pegawai Tiap Jabatan</h6>
+                <h6 class="text-black-50 mb-3 fw-bold">Pegawai Berdasarkan Jabatan</h6>
 
                 @foreach ($employee_position as $data)
                     <div class="form-text">{{ $data->position_desc }} <span style="float:right"><b>{{ $data->position_total }}</b></span></div>
