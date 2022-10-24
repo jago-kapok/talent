@@ -76,6 +76,7 @@ $(document).ready(function() {
         },
         bInfo           : true,
         bLengthChange   : false,
+        order           : [1, 'desc'],
     });
 
     $('#searching').on('keyup', function() {

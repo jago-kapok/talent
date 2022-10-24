@@ -141,6 +141,7 @@ $(document).ready(function() {
         },
         bInfo           : true,
         bLengthChange   : false,
+        order           : [1, 'asc'],
     });
 
     $('#searching').on('keyup', function() {

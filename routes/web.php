@@ -44,11 +44,6 @@ Route::get('/competency', 'CompetencyController@index')->middleware('auth')->nam
 
 Route::get('/performance', 'PerformanceController@index')->middleware('auth')->name('performance');
 
-// Route::get('/competency', 'CompetencyController@index')->middleware('auth')->name('competency');
-// Route::get('/competency/create/{id}', 'CompetencyController@create')->middleware('auth');
-// Route::get('/competency/get-history{id}', 'CompetencyController@getHistory')->middleware('auth');
-// Route::post('/competency', 'CompetencyController@store')->middleware('auth');
-
 Route::get('/user', 'UsersController@index')->middleware('auth')->name('user');
 Route::get('/pengguna-data', 'UsersController@userData')->middleware('auth');
 Route::get('/pengguna/create', 'UsersController@create')->middleware('auth')->name('create-pengguna');

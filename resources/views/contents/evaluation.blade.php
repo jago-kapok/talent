@@ -54,7 +54,33 @@
                             <td>{{ strtoupper($data->position_desc) }}</td>
                             <td>{{ $data->performance_total }}</td>
                             <td>{{ round($data->competency_total, 0) }}%</td>
-                            <td>-</td>
+                            <td>
+                                @if ($data->performance_total <= 85)
+                                    @if ($data->competency_total <= 75)
+                                        <span class="badge bg-danger">Dead Wood</span>
+                                    @elseif ($data->competency_total > 75 && $data->competency_total <= 85)
+                                        <span class="badge bg-success">Under Performer</span>
+                                    @else
+                                        <span class="badge bg-success">Possible Potential Star</span>
+                                    @endif
+                                @elseif ($data->performance_total > 85 && $data->performance_total <= 100)
+                                    @if ($data->competency_total <= 75)
+                                        <span class="badge bg-info">Adequate Performer</span>
+                                    @elseif ($data->competency_total > 75 && $data->competency_total <= 85)
+                                        <span class="badge bg-primary">Expected Performer</span>
+                                    @else
+                                        <span class="badge bg-secondary">Possible Future Star</span>
+                                    @endif
+                                @else
+                                    @if ($data->competency_total <= 75)
+                                        <span class="badge bg-info">Reliable Performer</span>
+                                    @elseif ($data->competency_total > 75 && $data->competency_total <= 85)
+                                        <span class="badge bg-secondary">Key Contributor</span>
+                                    @else
+                                        <span class="badge bg-warning">Star</span>
+                                    @endif
+                                @endif
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-danger" onclick="deleteRow()">
                                     <i class="bi-trash"></i>
@@ -127,7 +153,7 @@ $(document).ready(function() {
             { orderable: false, targets: 0 },
             { orderable: false, targets: 5 }
         ],
-        order: [1, 'desc'],
+        order: [0, 'asc'],
     });
 
     $('#searching').on('keyup', function() {

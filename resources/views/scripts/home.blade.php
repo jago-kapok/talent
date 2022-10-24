@@ -12,9 +12,16 @@
     });
 
     var options = {
-        series: [30, 55, 15],
-        labels: ['A', 'B', 'C'],
-        // colors:['#2be39a', '#f7b41d'],
+        series: [
+            @foreach ($employee_position as $data)
+                {{ $data->position_total }},
+            @endforeach
+        ],
+        labels: [
+            @foreach ($employee_position as $data)
+                "{{ $data->position_desc }}",
+            @endforeach
+        ],
         chart: {
             type: 'donut',
             height: 200
@@ -36,10 +43,10 @@
         series: [
             @foreach ($dead_wood as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -82,10 +89,10 @@
         series: [
             @foreach ($adequate_performer as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -128,10 +135,10 @@
         series: [
             @foreach ($reliable_performer as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -174,10 +181,10 @@
         series: [
             @foreach ($under_performer as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -220,10 +227,10 @@
         series: [
             @foreach ($expected_performer as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -266,10 +273,10 @@
         series: [
             @foreach ($key_contributor as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -312,10 +319,10 @@
         series: [
             @foreach ($possible_potential_star as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -357,10 +364,10 @@
         series: [
             @foreach ($possible_future_star as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },
@@ -402,10 +409,10 @@
         series: [
             @foreach ($star as $val)
                 {
-                    name: "{{ $val->employee_name }}",
+                    name: "{{ strtoupper($val->employee_name) }}",
                     data: [
                         [
-                            {{ $val->performance_total }}, {{ $val->competency_total_fix }}
+                            {{ $val->performance_total }}, {{ $val->competency_total }}
                         ]
                     ]
                 },

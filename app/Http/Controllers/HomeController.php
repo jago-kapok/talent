@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competency;
+use App\Models\Employee;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -27,6 +29,10 @@ class HomeController extends Controller
     {        
         $password_match = Auth::user()->level == 1 && (Hash::check('admin123', Auth::user()->password)) ? 1 : 0;
 
+        $employee                   = Employee::all();
+        $employee_position          = DB::table('employee')->select('position.position_desc', DB::raw('COUNT(position.position_desc) as position_total'))
+                                        ->join('position', 'position.position_id', 'employee.position_id')->groupBy('employee.position_id')->get();
+
         // getResult(PMin, PMax, CMin, CMax)
 
         $dead_wood                  = Competency::getResult(0, 85, 0, 75);
@@ -39,8 +45,12 @@ class HomeController extends Controller
         $possible_future_star       = Competency::getResult(86, 100, 86, 100);
         $star                       = Competency::getResult(101, 150, 86, 100);
 
+        // dd($employee_position);
+
         return view('home')
                 ->with('password_match', $password_match)
+                ->with('employee', $employee)
+                ->with('employee_position', $employee_position)
                 ->with('dead_wood', $dead_wood)
                 ->with('adequate_performer', $adequate_performer)
                 ->with('reliable_performer', $reliable_performer)
