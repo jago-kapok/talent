@@ -69,7 +69,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -115,7 +115,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -161,7 +161,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -207,7 +207,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -253,7 +253,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -299,7 +299,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -345,7 +345,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -390,7 +390,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false
@@ -435,7 +435,7 @@
             tickPlacement: 'on',
             position: 'bottom',
             labels: {
-                show: true
+                show: false
             },
             axisBorder: {
                 show: false

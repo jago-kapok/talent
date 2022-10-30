@@ -37,10 +37,7 @@
                     title: 'ERROR !',
                     text: 'Terjadi kesalahan saat koneksi ke server',
                     showConfirmButton: true
-                })
-                // $.each(error.response.data.errors, function(index, value) {
-                //     $.notify(value, "error");
-                // });
+                });
             });
     }
 </script>

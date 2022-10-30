@@ -18,13 +18,8 @@ class EvaluationController extends Controller
 
     public function index()
     {
-        $employee = Employee::all();
-        $evaluation = DB::table('view_competency_result')
-                    ->select('view_competency_result.employee_id', 'employee.employee_name', 'position.position_desc', 'view_performance_result.performance_total', 'view_competency_result.competency_percent as competency_total')
-                    ->join('view_performance_result', 'view_performance_result.employee_id', 'view_competency_result.employee_id')
-                    ->join('employee', 'employee.employee_id', '=', 'view_competency_result.employee_id')
-                    ->leftJoin('position', 'position.position_id', '=', 'employee.position_id')
-                    ->get();
+        $employee   = Employee::all();
+        $evaluation = Competency::getDataEvaluation();
 
         return view('contents.evaluation')
                     ->with('evaluation', $evaluation)
@@ -37,12 +32,20 @@ class EvaluationController extends Controller
 
     public function create($employee_id)
     {
-        $employee   = Employee::findOrFail($employee_id);
-        $competency = Competency::getCompetencyByPosition($employee->position_id);
+        $employee           = Employee::findOrFail($employee_id);
+        $competency         = Competency::getCompetencyByPosition($employee->position_id);
+        $last_competency    = Competency::getEvaluation($employee_id, 1);
+        $last_performance   = Performance::where('employee_id', $employee_id)->orderByDesc('performance_year')->limit(3)->get();
+        $competency_value   = Competency::getLastCompetency($employee_id);
+        $performance_value  = Performance::getLastPerformance($employee_id, date('Y'));
 
         return view('contents.create.evaluation')
                     ->with('employee', $employee)
-                    ->with('competency', $competency);
+                    ->with('competency', $competency)
+                    ->with('last_competency', $last_competency)
+                    ->with('last_performance', $last_performance)
+                    ->with('competency_value', $competency_value)
+                    ->with('performance_value', $performance_value);
     }
 
     /*
@@ -102,13 +105,17 @@ class EvaluationController extends Controller
         $competency         = Competency::getEvaluation($employee_id, 1);
         $last_performance   = Performance::where('employee_id', $employee_id)->orderByDesc('performance_year')->limit(3);
         $performance        = Performance::where('employee_id', $employee_id)->first();
+        $competency_value   = Competency::getLastCompetencyHistory($employee_id);
+        $performance_value  = Performance::getLastPerformance($employee_id, date('Y'));
 
         return view('contents.update.evaluation')
                     ->with('employee', $employee)
                     ->with('last_competency', $last_competency)
                     ->with('competency', $competency)
-                    ->with('last_performance', $last_performance);
-                    ->with('performance', $performance);
+                    ->with('last_performance', $last_performance)
+                    ->with('performance', $performance)
+                    ->with('competency_value', $competency_value)
+                    ->with('performance_value', $performance_value);
     }
 
     /*

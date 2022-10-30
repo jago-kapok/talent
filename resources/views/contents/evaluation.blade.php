@@ -85,7 +85,7 @@
                                 <a href="{{ route('evaluation-edit', ['id'=>$data->employee_id]) }}" class="btn btn-sm btn-primary">
                                     <i class="bi-pencil"></i>
                                 </a>
-                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteRow()">
+                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteData('{{ $data->employee_id }}')">
                                     <i class="bi-trash"></i>
                                 </button>
                             </td>
@@ -183,7 +183,7 @@ function deleteData(employee_id)
 {
     Swal.fire({
         title: 'WARNING !',
-        text: "Anda yakin ingin menghapus data ini ?" + employee_id,
+        text: "Anda yakin ingin menghapus data ini ?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

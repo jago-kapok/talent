@@ -29,7 +29,7 @@
 
 <div class="container-fluid">
     <div class="row gx-3" data-aos="zoom-in">
-        <div class="col-md-2 mb-2">
+        <div class="col-md-3 mb-2">
             <div class="card p-3 mb-3">
                 <div class="d-flex justify-content-between">
                     <div>
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div class="col-md-10 mb-2">
+        <div class="col-md-9 mb-2">
             <div class="card" data-aos="zoom-in">
                 <div class="row justify-content-center">
                     <div class="col-md-12 mb-lg-0">
@@ -94,7 +94,7 @@
                     
                     <div class="row gx-3">
                         <div class="col-md-1 border-end border-4 border-default d-none d-lg-block ps-sm-0 ps-lg-5 me-2">
-                            <h6 class="fw-bold fst-italic rotate"><i class="bi-arrow-up"></i>&nbsp; COMPETENCY</h6>
+                            <!-- <h6 class="fw-bold fst-italic rotate"><i class="bi-arrow-up"></i>&nbsp; COMPETENCY</h6> -->
                         </div>
 
                         <div class="col-md-10">

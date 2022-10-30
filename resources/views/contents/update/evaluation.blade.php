@@ -36,12 +36,12 @@
                 <h6 class="text-black-50 mb-3 fw-bold">Nilai Performa Terakhir</h6>
 
                 @foreach ($last_performance as $value)
-                    <div class="form-text">Parameters <span style="float:right"><b>{{ rand(10, 100) }}</b></span></div>
+                    <div class="form-text">Tahun {{ $value->performance_year }} <span style="float:right"><b>{{ $value->performance_result }}</b></span></div>
                     <div class="progress mb-2" style="height:.5rem">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ rand(10, 100) }}%"
-                            aria-valuenow="{{ rand(10, 100) }}"
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ $value->performance_result / 200 * 100 }}%"
+                            aria-valuenow="{{ $value->performance_result }}"
                             aria-valuemin="0"
-                            aria-valuemax="100"
+                            aria-valuemax="200"
                         ></div>
                     </div>
                 @endforeach
@@ -60,15 +60,17 @@
                             <div class="card-body">
                                 <div class="row text-center">
                                     <div class="col-md-4">
-                                        <h1 class="fw-bold my-1">{{ rand(10, 100) }}</h1>
+                                        <h1 class="fw-bold my-1">
+                                            {{ $competency_value->competency_total }} / {{ $employee->position->position_score }}
+                                        </h1>
                                         <p class="text-secondary fw-bold my-0">K O M P E T E N S I</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h1 class="fw-bold my-1">{{ rand(10, 100) }}</h1>
+                                        <h1 class="fw-bold my-1">{{ $performance_value->performance_total }}</h1>
                                         <p class="text-secondary fw-bold my-0">P E R F O R M A</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h1 class="fw-bold my-1">{{ rand(10, 100) }}%</h1>
+                                        <h1 class="fw-bold my-1">{{ round($competency_value->competency_percent, 0) }}%</h1>
                                         <p class="text-secondary fw-bold my-0">J O B &nbsp;F I T</p>
                                     </div>
                                 </div>

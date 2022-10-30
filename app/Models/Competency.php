@@ -15,6 +15,17 @@ class Competency extends Model
     protected $primaryKey   = 'competency_result_id';
     protected $guarded      = ['competency_result_id'];
 
+    public function getDataEvaluation() {
+        $result = DB::table('view_competency_result')
+                    ->select('view_competency_result.employee_id', 'employee.employee_name', 'position.position_desc', 'view_performance_result.performance_total', 'view_competency_result.competency_percent as competency_total')
+                    ->join('view_performance_result', 'view_performance_result.employee_id', 'view_competency_result.employee_id')
+                    ->join('employee', 'employee.employee_id', '=', 'view_competency_result.employee_id')
+                    ->leftJoin('position', 'position.position_id', '=', 'employee.position_id')
+                    ->get();
+
+        return $result;
+    }
+
     public function getCompetencyByPosition($position_id)
     {
         $result = DB::table('competency_role')->join('competency', 'competency.competency_id', 'competency_role.competency_id')
@@ -46,6 +57,20 @@ class Competency extends Model
                 ->whereBetween('performance_total', [$_pmin, $_pmax])
                 ->whereBetween('competency_percent', [$_cmin, $_cmax])
                 ->get();
+
+        return $result;
+    }
+
+    public function getLastCompetency($employee_id)
+    {
+        $result = DB::table('view_competency_result')->first();
+
+        return $result;
+    }
+
+    public function getLastCompetencyHistory($employee_id)
+    {
+        $result = DB::table('view_competency_result_history')->first();
 
         return $result;
     }
