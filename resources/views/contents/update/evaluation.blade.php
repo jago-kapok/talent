@@ -61,7 +61,9 @@
                                 <div class="row text-center">
                                     <div class="col-md-4">
                                         <h1 class="fw-bold my-1">
-                                            {{ $competency_value->competency_total }} / {{ $employee->position->position_score }}
+                                            @if ($competency_value)
+                                                {{ $competency_value->competency_total }} / {{ $employee->position->position_score }}
+                                            @endif
                                         </h1>
                                         <p class="text-secondary fw-bold my-0">K O M P E T E N S I</p>
                                     </div>
@@ -70,7 +72,11 @@
                                         <p class="text-secondary fw-bold my-0">P E R F O R M A</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h1 class="fw-bold my-1">{{ round($competency_value->competency_percent, 0) }}%</h1>
+                                        <h1 class="fw-bold my-1">
+                                            @if ($competency_value)
+                                                {{ round($competency_value->competency_percent, 0) }}%
+                                            @endif
+                                        </h1>
                                         <p class="text-secondary fw-bold my-0">J O B &nbsp;F I T</p>
                                     </div>
                                 </div>
