@@ -91,17 +91,17 @@
             <li class="sidebar-header pt-0">
               Menu Utama
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ (request()->is('home')) ? 'active' : '' }}">
               <a class="sidebar-link" href="{{ route('home') }}">
                 <i class="bi-house-door-fill"></i> <span class="align-middle">Beranda</span>
               </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ (request()->is('evaluation*')) ? 'active' : '' }}">
               <a class="sidebar-link" href="{{ route('evaluation') }}">
                 <i class="bi-trophy-fill"></i> <span class="align-middle">Penilaian Pegawai</span>
               </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ (request()->is('performance*')) || (request()->is('competency*')) ? 'active' : '' }}">
               <a data-bs-target="#history" data-bs-toggle="collapse" class="sidebar-link collapsed" aria-expanded="false">
                 <i class="bi-clock-history"></i> <span class="align-middle">Riwayat Penilaian</span>
                 <span class="sidebar-badge"><i class="bi-caret-down-fill"></i></span>
@@ -119,7 +119,7 @@
             <li class="sidebar-header">
               Pengaturan
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ (request()->is('employee*')) || (request()->is('position*')) ? 'active' : '' }}">
               <a data-bs-target="#master" data-bs-toggle="collapse" class="sidebar-link collapsed" aria-expanded="false">
                 <i class="bi-clipboard-data-fill"></i> <span class="align-middle">Data Master</span>
                 <span class="sidebar-badge"><i class="bi-caret-down-fill"></i></span>
@@ -133,7 +133,7 @@
                 </li>
               </ul>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ (request()->is('user*')) ? 'active' : '' }}">
               <a class="sidebar-link" href="{{ route('user') }}">
                 <i class="bi-people-fill"></i> <span class="align-middle">Manajemen User</span>
               </a>

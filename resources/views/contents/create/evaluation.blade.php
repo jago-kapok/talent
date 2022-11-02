@@ -56,12 +56,14 @@
                 <h6 class="text-black-50 mb-3 fw-bold">Hasil Penilaian Terakhir</h6>
                 <div class="row">
                     <div class="col-lg-8 d-flex align-items-stretch">
-                        <div class="card flex-fill p-1" style="background-color: rgb(23 162 184 / 20%)">
+                        <div class="card flex-fill p-1" style="background-color: #b0ecff">
                             <div class="card-body">
                                 <div class="row text-center">
                                     <div class="col-md-4">
                                         <h1 class="fw-bold my-1">
-                                            {{ $competency_value->competency_total }} / {{ $employee->position->position_score }}
+                                            @if ($competency_value)
+                                                {{ $competency_value->competency_total }} / {{ $employee->position->position_score }}
+                                            @endif
                                         </h1>
                                         <p class="text-secondary fw-bold my-0">K O M P E T E N S I</p>
                                     </div>
@@ -70,7 +72,11 @@
                                         <p class="text-secondary fw-bold my-0">P E R F O R M A</p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h1 class="fw-bold my-1">{{ round($competency_value->competency_percent, 0) }}%</h1>
+                                        <h1 class="fw-bold my-1">
+                                            @if ($competency_value)
+                                                {{ round($competency_value->competency_percent, 0) }}%
+                                            @endif
+                                        </h1>
                                         <p class="text-secondary fw-bold my-0">J O B &nbsp;F I T</p>
                                     </div>
                                 </div>
@@ -79,10 +85,10 @@
                     </div>
                     
                     <div class="col-lg-4 d-flex align-items-stretch">
-                        <div class="card flex-fill p-0" style="background-color: rgb(23 162 184 / 20%)">
+                        <div class="card flex-fill p-0" style="background-color: #b0ecff">
                             <div class="card-body">
                                 <div class="row text-center">
-                                    <h1 class="text-black-50 fw-bold my-1">POSSIBLE FUTURE STAR</h1>
+                                    <h1 class="text-black-50 fw-bold my-1">-</h1>
                                 </div>
                             </div>
                         </div>
@@ -116,10 +122,15 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="col-form-label">Tahun {{ date('Y') }}</label>
+                                    <label class="col-form-label">Tahun Penilaian</label>
+                                    <select name="performance_year" class="form-select">
+                                        @for ($i = date('Y'); $i >= date('Y') - 5 ; $i--)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
                                 </div>
                                 <div class="col-md-5 mb-3">
-                                    <input type="hidden" name="performance_year" class="form-control" value="{{ date('Y') }}">
+                                    <label class="col-form-label">&nbsp;</label>
                                     <input type="number" name="performance_result" class="form-control">
                                 </div>
                             </div>
@@ -130,7 +141,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button id="btnSubmit" type="button" class="btn btn-primary float-right" onclick="submitEvaluation()"><i class="bi-save"></i>&nbsp; Submit Penilaian</button>
-                        <a href="{{ route('competency') }}" class="btn btn-outline-danger"><i class="bi-x-square"></i>&nbsp; Kembali</a>
+                        <a href="{{ route('evaluation') }}" class="btn btn-outline-danger"><i class="bi-x-square"></i>&nbsp; Kembali</a>
                     </div>
                 </div>
             </form>

@@ -42,7 +42,6 @@ Route::post('/position/detail', 'PositionController@storeDetail')->middleware('a
 Route::delete('/position/delete/{id}', 'PositionController@destroy')->middleware('auth');
 
 Route::get('/competency', 'CompetencyController@index')->middleware('auth')->name('competency');
-
 Route::get('/performance', 'PerformanceController@index')->middleware('auth')->name('performance');
 
 Route::get('/user', 'UsersController@index')->middleware('auth')->name('user');

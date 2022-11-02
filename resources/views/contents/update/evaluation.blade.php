@@ -56,7 +56,7 @@
                 <h6 class="text-black-50 mb-3 fw-bold">Hasil Penilaian Terakhir</h6>
                 <div class="row">
                     <div class="col-lg-8 d-flex align-items-stretch">
-                        <div class="card flex-fill p-1" style="background-color: rgb(23 162 184 / 20%)">
+                        <div class="card flex-fill p-1" style="background-color: #b0ecff">
                             <div class="card-body">
                                 <div class="row text-center">
                                     <div class="col-md-4">
@@ -79,10 +79,10 @@
                     </div>
                     
                     <div class="col-lg-4 d-flex align-items-stretch">
-                        <div class="card flex-fill p-0" style="background-color: rgb(23 162 184 / 20%)">
+                        <div class="card flex-fill p-0" style="background-color: #b0ecff">
                             <div class="card-body">
                                 <div class="row text-center">
-                                    <h1 class="text-black-50 fw-bold my-1">POSSIBLE FUTURE STAR</h1>
+                                    <h1 class="text-black-50 fw-bold my-1">-</h1>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button id="btnSubmit" type="button" class="btn btn-primary float-right" onclick="submitEvaluation()"><i class="bi-save"></i>&nbsp; Submit Penilaian</button>
-                        <a href="{{ route('competency') }}" class="btn btn-outline-danger"><i class="bi-x-square"></i>&nbsp; Kembali</a>
+                        <a href="{{ route('evaluation') }}" class="btn btn-outline-danger"><i class="bi-x-square"></i>&nbsp; Kembali</a>
                     </div>
                 </div>
             </form>

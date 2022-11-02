@@ -203,9 +203,9 @@ function deleteData(employee_id)
                             title   : 'SUCCESS !',
                             text    : 'Data berhasil dihapus !',
                             showConfirmButton: true
+                        }).then((result) => {
+                            location.reload();
                         });
-
-                        $('#data_tables').DataTable().draw();
                     }
                 }, (error) => {
                     console.log(error.response.data.errors);
