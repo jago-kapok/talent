@@ -43,6 +43,7 @@
                         <th width="50">Kode Pegawai</th>
                         <th width="100">Nama Pegawai</th>
                         <th width="100">Jabatan</th>
+                        <th width="100">Unit Kerja</th>
                         <th width="50">Pilihan</th>
                     </tr>
                 </thead>
@@ -52,6 +53,7 @@
                         <td>{{ $data->employee_code }}</td>
                         <td>{{ strtoupper($data->employee_name) }}</td>
                         <td>{{ strtoupper($data->position->position_desc) }}</td>
+                        <td>{{ strtoupper($data->employee_work_location) }}</td>
                         <td>
                             <button type="button" class="btn btn-sm btn-primary" onclick="editRow('{{ $data->employee_id }}')">
                                 <i class="bi-pencil"></i>
@@ -80,15 +82,16 @@
                     <div class="modal-body">
                         <input id="employee_id" type="hidden" name="employee_id">
                         <div class="row">
-                            <div class="col-md-12 p-3">
+                            <div class="col-md-12 mb-4">
                                 <div class="row">
                                     <label class="col-md-6 col-form-label">Kode Pegawai</label>
                                     <div class="col-md-6">
                                         <input id="employee_code" name="employee_code" class="form-control">
+                                        <span class="form-text">Diisi dengan NIK / NIP Pegawai</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 p-3">
+                            <div class="col-md-12 mb-4">
                                 <div class="row">
                                     <label class="col-md-6 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                     <div class="col-md-6">
@@ -96,16 +99,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 p-3">
+                            <div class="col-md-12 mb-4">
                                 <div class="row">
                                     <label class="col-md-6 col-form-label">Jabatan <span class="text-danger">*</span></label>
                                     <div class="col-md-6">
-                                        <select id="position_id" name="position_id" class="form-select">
-                                            <option disabled selected>-</option>
-                                            @foreach ($position as $value)
-                                                <option value="{{ $value->position_id }}">{{ $value->position_desc }}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="input-group">
+                                            <select id="position_id" name="position_id" class="form-select">
+                                                <option disabled selected>-</option>
+                                                @foreach ($position as $value)
+                                                    <option value="{{ $value->position_id }}">{{ $value->position_desc }}</option>
+                                                @endforeach
+                                            </select>
+                                            <a href="{{ route('position') }}" class="btn btn-info"><i class="bi-plus-lg"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <div class="row">
+                                    <label class="col-md-6 col-form-label">Unit Kerja</label>
+                                    <div class="col-md-6">
+                                        <input id="employee_work_location" name="employee_work_location" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -122,6 +136,11 @@
 </div>
 
 <script>
+/* Konfigurasi Autocomplete
+/* ======================================================== */
+
+
+
 /* Konfigurasi DataTables
 /* ======================================================== */
 
@@ -208,7 +227,8 @@ function editRow(employee_id)
                 document.getElementById('employee_id').value = employee_id;
                 document.getElementById('employee_code').value = response.data.employee.employee_code;
                 document.getElementById('employee_name').value = response.data.employee.employee_name;
-                document.getElementById('position_id').value = response.data.employee.position_id;;
+                document.getElementById('position_id').value = response.data.employee.position_id;
+                document.getElementById('employee_work_location').value = response.data.employee.employee_work_location;
             }
         }, (error) => {
             console.log(error.response.data.errors);

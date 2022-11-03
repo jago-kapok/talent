@@ -6,7 +6,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color: #b0ecff">
             <li class="breadcrumb-item"><i class="bi-house-door-fill"></i>&nbsp;<a href="{{ route('home') }}"> Beranda</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Master Jabatan</li>
+            <li class="breadcrumb-item active" aria-current="page">Master Kompetensi</li>
         </ol>
     </nav>
     
@@ -29,8 +29,8 @@
             </div>
             
             <div class="col-md-6 mb-2">
-                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#modalPosition">
-                    Tambah Jabatan
+                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#modalCompetency">
+                    Tambah Kompetensi
                 </button>
             </div>
         </div>
@@ -40,22 +40,24 @@
                 <thead class="bg-app-table">
                     <tr>
                         <th width="20">No.</th>
-                        <th width="100">Nama Jabatan</th>
-                        <th width="100">Skor Kompetensi</th>
+                        <th width="100">Kode Kompetensi</th>
+                        <th width="100">Deskripsi</th>
+                        <th width="100">Skor Standar</th>
                         <th width="50">Pilihan</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($position as $key => $data)
+                    @foreach ($competency as $key => $data)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ strtoupper($data->position_desc) }}</td>
-                            <td>{{ $data->position_score }}</td>
+                            <td>{{ strtoupper($data->competency_code) }}</td>
+                            <td>{{ strtoupper($data->competency_desc) }}</td>
+                            <td>{{ $data->competency_score }}</td>
                             <td>
-                                <a href="{{ url('position/detail').'/'.$data->position_id }}" class="btn btn-sm btn-warning">
-                                    <i class="bi-list"></i>
-                                </a>
-                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteRow('{{ $data->position_id }}')">
+                                <button type="button" class="btn btn-sm btn-primary" onclick="editRow('{{ $data->competency_id }}')">
+                                    <i class="bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteRow('{{ $data->competency_id }}')">
                                     <i class="bi-trash"></i>
                                 </button>
                             </td>
@@ -66,11 +68,11 @@
         </div>
 	</div>
 
-    <div class="modal fade" id="modalPosition" data-bs-backdrop="static">
+    <div class="modal fade" id="modalCompetency" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="staticBackdropLabel">Jabatan (Posisi)</h3>
+                    <h3 class="modal-title" id="staticBackdropLabel">Item Kompetensi</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
@@ -78,12 +80,29 @@
                     @csrf
 
                     <div class="modal-body">
+                        <input id="competency_id" type="hidden" name="competency_id">
                         <div class="row">
                             <div class="col-md-12 mb-4">
                                 <div class="row">
-                                    <label class="col-md-6 col-form-label">Nama Jabatan (Posisi) <span class="text-danger">*</span></label>
+                                    <label class="col-md-6 col-form-label">Kode Kompetensi <span class="text-danger">*</span></label>
                                     <div class="col-md-6">
-                                        <input name="position_desc" class="form-control">
+                                        <input id="competency_code" name="competency_code" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <div class="row">
+                                    <label class="col-md-6 col-form-label">Deskripsi <span class="text-danger">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="competency_desc" name="competency_desc" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <div class="row">
+                                    <label class="col-md-6 col-form-label">Skor Standar <span class="text-danger">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="competency_score" type="number" name="competency_score" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +155,7 @@ $(document).ready(function() {
 function submitForm() {
     let form        = document.querySelector('#form_data');
     let data        = new FormData(form);
-    let url         = "{{ route('save-position') }}";
+    let url         = "{{ route('competency-item') }}";
     let csrf_token  = document.getElementsByTagName("META")[2].content;
 
     const options = {
@@ -153,8 +172,39 @@ function submitForm() {
                     text    : 'Data berhasil disimpan',
                     showConfirmButton: true
                 }).then((result) => {
-                    window.location = "{{ url('position') }}";
+                    window.location = "{{ url('competency-item') }}";
                 });
+            }
+        }, (error) => {
+            console.log(error.response.data.errors);
+            
+            Swal.fire({
+                icon    : 'error',
+                title   : 'ERROR !',
+                text    : 'Terjadi kesalahan saat koneksi ke server',
+                showConfirmButton: true
+            });
+        });
+}
+
+/* Edit dari Database
+/* ======================================================== */
+
+function editRow(competency_id)
+{
+    var myModal = new bootstrap.Modal(document.getElementById('modalCompetency'), { keyboard: false });
+    myModal.show();
+
+    var url = "{{ url('competency-item') }}" + "/" + competency_id;
+
+    axios.get(url)
+        .then((response) => {
+            if (response.data.success == true)
+            {
+                document.getElementById('competency_id').value = competency_id;
+                document.getElementById('competency_code').value = response.data.competency.competency_code;
+                document.getElementById('competency_desc').value = response.data.competency.competency_desc;
+                document.getElementById('competency_score').value = response.data.competency.competency_score;;
             }
         }, (error) => {
             console.log(error.response.data.errors);
@@ -171,7 +221,7 @@ function submitForm() {
 /* Hapus dari Database
 /* ======================================================== */
 
-function deleteRow(position_id)
+function deleteRow(competency_id)
 {
     Swal.fire({
         title: 'WARNING !',
@@ -184,7 +234,7 @@ function deleteRow(position_id)
         cancelButtonText: 'Batal'
     }).then((result) => {
         if (result.isConfirmed) {
-            let url = "{{ url('position/delete') }}" + "/" + position_id;
+            let url = "{{ url('competency-item/delete') }}" + "/" + competency_id;
 
             axios.delete(url)
                 .then((response) => {
@@ -196,7 +246,7 @@ function deleteRow(position_id)
                             text    : 'Data berhasil dihapus !',
                             showConfirmButton: true
                         }).then((result) => {
-                            window.location = "{{ url('position') }}";
+                            window.location = "{{ url('competency-item') }}";
                         });
                     }
                 }, (error) => {

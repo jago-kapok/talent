@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
-use App\Models\Position;
+use App\Models\CompetencyItem;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class CompetencyItemController extends Controller
 {
     /*
         ==============================================================
@@ -14,12 +13,9 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $employee = Employee::all();
-        $position = Position::all();
+        $competency = CompetencyItem::all();
 
-        return view('contents.employee')
-                ->with('employee', $employee)
-                ->with('position', $position);
+        return view('contents.competency-item')->with('competency', $competency);
     }
 
     /*
@@ -30,7 +26,7 @@ class EmployeeController extends Controller
     {
         $input_form = $request->all();
 
-        $employee = Employee::updateOrCreate(['employee_id' => $request->input('employee_id')], $input_form);
+        $competency = CompetencyItem::updateOrCreate(['competency_id' => $request->input('competency_id')], $input_form);
 
         return response()->json(['success' => true]);
     }
@@ -39,9 +35,9 @@ class EmployeeController extends Controller
         ==============================================================
     */
 
-    public function destroy($employee_id)
+    public function destroy($competency_id)
     {
-        Employee::where('employee_id', $employee_id)->delete();
+        CompetencyItem::where('competency_id', $competency_id)->delete();
 
         return response()->json(['success' => true]);
     }
@@ -50,10 +46,10 @@ class EmployeeController extends Controller
         ==============================================================
     */
 
-    public function getById($employee_id)
+    public function getById($competency_id)
     {
-        $employee = Employee::find($employee_id);
+        $competency = CompetencyItem::find($competency_id);
 
-        return response()->json(['success' => true, 'employee' => $employee]);
+        return response()->json(['success' => true, 'competency' => $competency]);
     }
 }

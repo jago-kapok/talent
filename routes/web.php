@@ -41,6 +41,11 @@ Route::post('/position', 'PositionController@store')->middleware('auth')->name('
 Route::post('/position/detail', 'PositionController@storeDetail')->middleware('auth');
 Route::delete('/position/delete/{id}', 'PositionController@destroy')->middleware('auth');
 
+Route::get('/competency-item', 'CompetencyItemController@index')->middleware('auth')->name('competency-item');
+Route::get('/competency-item/{id}', 'CompetencyItemController@getById')->middleware('auth');
+Route::post('/competency-item', 'CompetencyItemController@store')->middleware('auth')->name('competency-item');
+Route::delete('/competency-item/delete/{id}', 'CompetencyItemController@destroy')->middleware('auth');
+
 Route::get('/competency', 'CompetencyController@index')->middleware('auth')->name('competency');
 Route::get('/performance', 'PerformanceController@index')->middleware('auth')->name('performance');
 

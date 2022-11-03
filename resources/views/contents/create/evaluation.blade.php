@@ -99,6 +99,13 @@
                     <h6 class="text-black-50 mb-3 fw-bold">Input Penilaian Kompetensi :</h6>
 
                     <div class="row ge-5">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger">
+                                - Nilai kompetensi antara angka 1 sampai 5, dengan nilai standar adalah angka 3<br>
+                                - (1) = Poor; (2) = Below Target; (3) = On Target; (4) = Above Target; (5) = Outstanding;
+                            </div>
+                        </div>
+
                         @foreach ($competency as $row)
                             <div class="col-md-4 border-end border-2">
                                 <div class="row">

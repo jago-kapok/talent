@@ -49,21 +49,6 @@
                     <div class="m-0">
                         <div id="chart_"></div>
                     </div>
-
-                    <!-- <div class="w-100">
-                        <span class="badge" style="background-color: #2be39a; height: 16px; width: 16px; border-radius: 0;">&nbsp;</span>&nbsp; <span style="vertical-align:middle">
-                            Parameter : {{ rand(10, 100) }}
-                        </span><br>
-                        <span class="badge" style="background-color: #2be39a; height: 16px; width: 16px; border-radius: 0;">&nbsp;</span>&nbsp; <span style="vertical-align:middle">
-                            Parameter : {{ rand(10, 100) }}
-                        </span><br>
-                        <span class="badge" style="background-color: #2be39a; height: 16px; width: 16px; border-radius: 0;">&nbsp;</span>&nbsp; <span style="vertical-align:middle">
-                            Parameter : {{ rand(10, 100) }}
-                        </span><br>
-                        <span class="badge" style="background-color: #2be39a; height: 16px; width: 16px; border-radius: 0;">&nbsp;</span>&nbsp; <span style="vertical-align:middle">
-                            Parameter : {{ rand(10, 100) }}
-                        </span>
-                    </div> -->
                 </div>
             </div>
 

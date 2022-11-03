@@ -44,43 +44,6 @@
   </head>
 
   <body>
-    <div class="corner-top">
-      <!-- <svg width="350" height="276" viewBox="0 0 350 276" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_302_8)">
-          <rect x="302.274" y="-9.85791" width="300" height="20" rx="10" transform="rotate(135 302.274 -9.85791)" fill="url(#paint0_linear_302_8)" />
-          <rect x="302.728" y="-69.8579" width="300" height="20" rx="10" transform="rotate(135 302.728 -69.8579)" fill="url(#paint1_linear_302_8)" />
-          <rect x="302.728" y="-126.858" width="300" height="20" rx="10" transform="rotate(135 302.728 -126.858)" fill="url(#paint2_linear_302_8)" />
-          <rect x="434.728" y="-82.8579" width="300" height="20" rx="10" transform="rotate(135 434.728 -82.8579)" fill="url(#paint3_linear_302_8)" />
-          <rect x="535.728" y="-125.858" width="300" height="20" rx="10" transform="rotate(135 535.728 -125.858)" fill="url(#paint4_linear_302_8)" />
-        </g>
-        <defs>
-        <linearGradient id="paint0_linear_302_8" x1="452.274" y1="-9.85796" x2="622.687" y2="10.5547" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#39BDC4" />
-          <stop offset="0.970823" stop-color="#47DA96" />
-        </linearGradient>
-        <linearGradient id="paint1_linear_302_8" x1="452.728" y1="-69.858" x2="623.141" y2="-49.4453" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#39BDC4" />
-          <stop offset="0.970823" stop-color="#47DA96" />
-        </linearGradient>
-        <linearGradient id="paint2_linear_302_8" x1="452.728" y1="-126.858" x2="623.141" y2="-106.445" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#39BDC4" />
-          <stop offset="0.970823" stop-color="#47DA96" />
-        </linearGradient>
-        <linearGradient id="paint3_linear_302_8" x1="584.728" y1="-82.858" x2="755.141" y2="-62.4453" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#39BDC4" />
-          <stop offset="0.970823" stop-color="#47DA96" />
-        </linearGradient>
-        <linearGradient id="paint4_linear_302_8" x1="685.728" y1="-125.858" x2="856.141" y2="-105.445" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#39BDC4" />
-          <stop offset="0.970823" stop-color="#47DA96" />
-        </linearGradient>
-        <clipPath id="clip0_302_8">
-        <rect width="350" height="276" fill="white" />
-        </clipPath>
-        </defs>
-      </svg> -->
-    </div>
-    
     <div class="wrapper">
       <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
@@ -130,6 +93,9 @@
                 </li>
                 <li class="sidebar-item">
                   <a href="{{ route('position') }}" class="sidebar-link"><span class="ms-4">&nbsp;&nbsp;Jabatan</span></a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="{{ route('competency-item') }}" class="sidebar-link"><span class="ms-4">&nbsp;&nbsp;Item Kompetensi</span></a>
                 </li>
               </ul>
             </li>
