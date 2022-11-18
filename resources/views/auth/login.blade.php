@@ -107,8 +107,8 @@
     </div>
 
     <section id="content" class="h-100 w-100" style="box-sizing: border-box" data-aos="zoom-in">
-        <div class="container mt-5 p-5">
-            <div class="mt-5">
+        <div class="container mt-5">
+            <div class="" style="margin-top: 10%">
                 <div class="row g-0 justify-content-center align-items-center">
                     <div class="col-md-3 mb-5">                        
                         <div class="card cascading-right border-3 p-4" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px);">
@@ -152,7 +152,7 @@
                     </div>
 
                     <div class="col-md-4 mb-5">
-                        <img src="{{ asset('img/login-img.jpg') }}" class="w-100 rounded shadow-4 shadow-sm bg-body"/>
+                        <img src="{{ asset('img/login-img.png') }}" class="shadow-4 shadow-sm bg-body" style="width:35em !important; border-radius:2em" />
                     </div>
                 </div>
             </div>

@@ -69,7 +69,7 @@
 	</div>
 
     <div class="modal fade" id="modalEmployee" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title" id="staticBackdropLabel">Pegawai</h3>
@@ -81,45 +81,114 @@
 
                     <div class="modal-body">
                         <input id="employee_id" type="hidden" name="employee_id">
-                        <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <div class="row">
-                                    <label class="col-md-6 col-form-label">Kode Pegawai</label>
-                                    <div class="col-md-6">
-                                        <input id="employee_code" name="employee_code" class="form-control">
-                                        <span class="form-text">Diisi dengan NIK / NIP Pegawai</span>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-5 col-form-label">Kode Pegawai</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_code" name="employee_code" class="form-control">
+                                            <span class="form-text">Diisi dengan NIK / NIP Pegawai</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 mb-4">
-                                <div class="row">
-                                    <label class="col-md-6 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
-                                    <div class="col-md-6">
-                                        <input id="employee_name" name="employee_name" class="form-control">
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-5 col-form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                        <div class="col-md-6">
+                                            <input id="employee_name" name="employee_name" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 mb-4">
-                                <div class="row">
-                                    <label class="col-md-6 col-form-label">Jabatan <span class="text-danger">*</span></label>
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-                                            <select id="position_id" name="position_id" class="form-select">
-                                                <option disabled selected>-</option>
-                                                @foreach ($position as $value)
-                                                    <option value="{{ $value->position_id }}">{{ $value->position_desc }}</option>
-                                                @endforeach
-                                            </select>
-                                            <a href="{{ route('position') }}" class="btn btn-info"><i class="bi-plus-lg"></i></a>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-5 col-form-label">Tanggal Lahir</label>
+                                        <div class="col-md-6">
+                                            <input type="date" id="employee_birthdate" name="employee_birthdate" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-5 col-form-label">Pendidikan Terakhir</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_education" name="employee_education" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-5 col-form-label">Jabatan <span class="text-danger">*</span></label>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <select id="position_id" name="position_id" class="form-select">
+                                                    <option disabled selected>-</option>
+                                                    @foreach ($position as $value)
+                                                        <option value="{{ $value->position_id }}">{{ $value->position_desc }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <a href="{{ route('position') }}" class="btn btn-info" target="_blank"><i class="bi-plus-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-5 col-form-label">Unit Kerja</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_work_location" name="employee_work_location" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Person Grade</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_person_grade" name="employee_person_grade" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 mb-4">
-                                <div class="row">
-                                    <label class="col-md-6 col-form-label">Unit Kerja</label>
-                                    <div class="col-md-6">
-                                        <input id="employee_work_location" name="employee_work_location" class="form-control">
+
+                            <div class="col-md-6">
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Tanggal Join Perusahaan</label>
+                                        <div class="col-md-6">
+                                            <input type="date" id="employee_join_date" name="employee_join_date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Pengalaman Kerja Sebelumnya</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_experience" name="employee_experience" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Pengalaman Jabatan</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_position" name="employee_position" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Job Family</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_job_family" name="employee_job_family" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Job Family</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_job_grade" name="employee_job_grade" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
