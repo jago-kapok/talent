@@ -140,14 +140,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-4">
-                                    <div class="row">
-                                        <label class="col-md-6 col-form-label">Person Grade</label>
-                                        <div class="col-md-6">
-                                            <input id="employee_person_grade" name="employee_person_grade" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="col-md-6">
@@ -188,6 +180,14 @@
                                         <label class="col-md-6 col-form-label">Job Family</label>
                                         <div class="col-md-6">
                                             <input id="employee_job_grade" name="employee_job_grade" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Person Grade</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_person_grade" name="employee_person_grade" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -298,6 +298,14 @@ function editRow(employee_id)
                 document.getElementById('employee_name').value = response.data.employee.employee_name;
                 document.getElementById('position_id').value = response.data.employee.position_id;
                 document.getElementById('employee_work_location').value = response.data.employee.employee_work_location;
+                document.getElementById('employee_join_date').value = response.data.employee.employee_join_date;
+                document.getElementById('employee_birthdate').value = response.data.employee.employee_birthdate;
+                document.getElementById('employee_experience').value = response.data.employee.employee_experience;
+                document.getElementById('employee_position').value = response.data.employee.employee_position;
+                document.getElementById('employee_education').value = response.data.employee.employee_education;
+                document.getElementById('employee_job_family').value = response.data.employee.employee_job_family;
+                document.getElementById('employee_job_grade').value = response.data.employee.employee_job_grade;
+                document.getElementById('employee_person_grade').value = response.data.employee.employee_person_grade;
             }
         }, (error) => {
             console.log(error.response.data.errors);

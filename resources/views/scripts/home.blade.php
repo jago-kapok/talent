@@ -82,6 +82,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
     
@@ -128,6 +140,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
 
@@ -174,6 +198,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
 
@@ -220,6 +256,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
 
@@ -266,6 +314,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
 
@@ -312,6 +372,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
 
@@ -357,6 +429,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
 
@@ -459,6 +543,18 @@
         },
         legend: {
             show: false
+        },
+        tooltip: {
+            intersect: false,
+            custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                return (
+                    '<div class="row py-2 px-4">' +
+                        w.globals.seriesNames[dataPointIndex] +
+                        ' (P: ' + w.globals.series[dataPointIndex] +
+                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                    '</div>'
+                );
+            }
         }
     };
 
