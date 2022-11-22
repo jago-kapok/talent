@@ -4,8 +4,10 @@
 
 <style>
     .rotate {
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
+        /*writing-mode: vertical-rl;*/
+        /*transform: rotate(180deg);*/
+        transform: rotate(90deg);
+        margin-bottom: -0.3em !important;
     }
     .matrix-primary {
         border-bottom: .5em solid #1e70f8 !important; background-color: rgb(40 114 243 / 10%);
@@ -56,7 +58,7 @@
                 <h6 class="text-black-50 mb-3 fw-bold">Pegawai Berdasarkan Jabatan</h6>
 
                 @foreach ($employee_position as $data)
-                    <div class="form-text">{{ $data->position_desc }} <span style="float:right"><b>{{ $data->position_total }}</b></span></div>
+                    <div class="form-text">{{ strtoupper($data->position_desc) }} <span style="float:right"><b>{{ $data->position_total }}</b></span></div>
                     <div class="progress mb-2" style="height:.5rem">
                         <div class="progress-bar bg-info" role="progressbar" style="width: {{ $data->position_total / count($employee) * 100 }}%"
                             aria-valuenow="{{ $data->position_total }}"
@@ -80,6 +82,17 @@
                     <div class="row gx-3">
                         <div class="col-md-1 border-end border-4 border-default d-none d-lg-block ps-sm-0 ps-lg-5 me-2">
                             <!-- <h6 class="fw-bold fst-italic rotate"><i class="bi-arrow-up"></i>&nbsp; COMPETENCY</h6> -->
+
+                            <h6 class="fw-bold rotate">C</h6>
+                            <h6 class="fw-bold rotate">O</h6>
+                            <h6 class="fw-bold rotate">M</h6>
+                            <h6 class="fw-bold rotate">P</h6>
+                            <h6 class="fw-bold rotate">E</h6>
+                            <h6 class="fw-bold rotate">T</h6>
+                            <h6 class="fw-bold rotate">E</h6>
+                            <h6 class="fw-bold rotate">N</h6>
+                            <h6 class="fw-bold rotate">C</h6>
+                            <h6 class="fw-bold rotate">Y</h6>
                         </div>
 
                         <div class="col-md-10">
@@ -91,7 +104,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($possible_potential_star as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -107,7 +125,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($possible_future_star as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -123,7 +146,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($star as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -149,7 +177,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($under_performer as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -165,7 +198,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($expected_performer as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -181,7 +219,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($key_contributor as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -207,7 +250,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($dead_wood as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -223,7 +271,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($adequate_performer as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -239,7 +292,12 @@
                                                 <a href="javascript:void(0)" class="text-primary" data-bs-toggle="dropdown"><i class="bi-person-lines-fill"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     @foreach ($reliable_performer as $value)
-                                                        <li><button class="dropdown-item" type="button">{{ strtoupper($value->employee_name) }}</button></li>
+                                                        <li>
+                                                            <button class="dropdown-item" type="button">
+                                                                {{ strtoupper($value->employee_name) }}
+                                                                (P: {{ $value->performance_total }}, K: {{ $value->competency_total }})
+                                                            </button>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>

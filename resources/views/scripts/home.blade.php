@@ -89,8 +89,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -147,8 +147,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -180,7 +180,6 @@
         },
         xaxis: {
             min: 100.1,
-            max: 200,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -205,8 +204,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -263,8 +262,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -321,8 +320,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -354,7 +353,6 @@
         },
         xaxis: {
             min: 100.1,
-            max: 200,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -379,8 +377,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -436,8 +434,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -493,8 +491,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
@@ -526,7 +524,6 @@
         },
         xaxis: {
             min: 100.1,
-            max: 200,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -550,8 +547,8 @@
                 return (
                     '<div class="row py-2 px-4">' +
                         w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.series[dataPointIndex] +
-                        ', K: ' + w.globals.seriesX[dataPointIndex][0] + ')' +
+                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
+                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
                     '</div>'
                 );
             }
