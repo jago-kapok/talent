@@ -64,7 +64,7 @@
         },
         xaxis: {
             min: 0,
-            max: 85,
+            max: 95,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -78,7 +78,7 @@
         yaxis: {
             show: false,
             min: 0,
-            max: 75
+            max: 99
         },
         legend: {
             show: false
@@ -121,7 +121,7 @@
             show: false
         },
         xaxis: {
-            min: 86,
+            min: 96,
             max: 100,
             tickAmount: 5,
             tickPlacement: 'on',
@@ -136,7 +136,7 @@
         yaxis: {
             show: false,
             min: 0,
-            max: 75
+            max: 99
         },
         legend: {
             show: false
@@ -179,8 +179,8 @@
             show: false
         },
         xaxis: {
-            min: 101,
-            max: 150,
+            min: 100.1,
+            max: 200,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -194,7 +194,7 @@
         yaxis: {
             show: false,
             min: 0,
-            max: 75
+            max: 99
         },
         legend: {
             show: false
@@ -238,7 +238,7 @@
         },
         xaxis: {
             min: 0,
-            max: 85,
+            max: 95,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -251,8 +251,8 @@
         },
         yaxis: {
             show: false,
-            min: 76,
-            max: 85
+            min: 100,
+            max: 100
         },
         legend: {
             show: false
@@ -295,7 +295,7 @@
             show: false
         },
         xaxis: {
-            min: 86,
+            min: 96,
             max: 100,
             tickAmount: 5,
             tickPlacement: 'on',
@@ -309,8 +309,8 @@
         },
         yaxis: {
             show: false,
-            min: 75,
-            max: 86
+            min: 100,
+            max: 100
         },
         legend: {
             show: false
@@ -353,8 +353,8 @@
             show: false
         },
         xaxis: {
-            min: 101,
-            max: 150,
+            min: 100.1,
+            max: 200,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -367,8 +367,8 @@
         },
         yaxis: {
             show: false,
-            min: 76,
-            max: 85
+            min: 100,
+            max: 100
         },
         legend: {
             show: false
@@ -412,7 +412,7 @@
         },
         xaxis: {
             min: 0,
-            max: 85,
+            max: 95,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -425,7 +425,7 @@
         },
         yaxis: {
             show: false,
-            min: 86
+            min: 100.1
         },
         legend: {
             show: false
@@ -468,7 +468,7 @@
             show: false
         },
         xaxis: {
-            min: 86,
+            min: 96,
             max: 100,
             tickAmount: 5,
             tickPlacement: 'on',
@@ -482,7 +482,7 @@
         },
         yaxis: {
             show: false,
-            min: 86
+            min: 100.1
         },
         legend: {
             show: false
@@ -525,8 +525,8 @@
             show: false
         },
         xaxis: {
-            min: 101,
-            max: 150,
+            min: 100.1,
+            max: 200,
             tickAmount: 5,
             tickPlacement: 'on',
             position: 'bottom',
@@ -539,7 +539,7 @@
         },
         yaxis: {
             show: false,
-            min: 86
+            min: 100.1
         },
         legend: {
             show: false

@@ -35,15 +35,15 @@ class HomeController extends Controller
 
         // getResult(PMin, PMax, CMin, CMax)
 
-        $dead_wood                  = Competency::getResult(0, 85, 0, 75);
-        $adequate_performer         = Competency::getResult(86, 100, 0, 75);
-        $reliable_performer         = Competency::getResult(101, 150, 0, 75);
-        $under_performer            = Competency::getResult(0, 85, 76, 85);
-        $expected_performer         = Competency::getResult(86, 100, 76, 85);
-        $key_contributor            = Competency::getResult(101, 150, 76, 85);
-        $possible_potential_star    = Competency::getResult(0, 85, 86, 100);
-        $possible_future_star       = Competency::getResult(86, 100, 86, 100);
-        $star                       = Competency::getResult(101, 150, 86, 100);
+        $dead_wood                  = Competency::getResult(0, 95, 0, 99);
+        $adequate_performer         = Competency::getResult(96, 100, 0, 99);
+        $reliable_performer         = Competency::getResult(100.1, 200, 0, 99);
+        $under_performer            = Competency::getResult(0, 95, 100, 100);
+        $expected_performer         = Competency::getResult(96, 100, 100, 100);
+        $key_contributor            = Competency::getResult(100.1, 200, 100, 100);
+        $possible_potential_star    = Competency::getResult(0, 95, 100.1, 200);
+        $possible_future_star       = Competency::getResult(96, 100, 100.1, 200);
+        $star                       = Competency::getResult(100.1, 200, 100.1, 200);
 
         // dd($employee_position);
 

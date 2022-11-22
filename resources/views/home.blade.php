@@ -137,7 +137,7 @@
 
                     <div class="row gx-3">
                         <div class="col-md-1 border-end border-4 border-default d-none d-lg-block me-2">
-                            <h6 class="fw-bold float-right">85%</h6>
+                            <h6 class="fw-bold float-right">> 100</h6>
                         </div>
 
                         <div class="col-md-10">
@@ -195,7 +195,7 @@
 
                     <div class="row gx-3">
                         <div class="col-md-1 border-end border-4 border-default d-none d-lg-block me-2">
-                            <h6 class="fw-bold float-right">75%</h6>
+                            <h6 class="fw-bold float-right">< 100</h6>
                         </div>
 
                         <div class="col-md-10">
@@ -261,7 +261,7 @@
                                         <h6 class="fw-bold fst-italic">PERFORMANCE &nbsp;<i class="bi-arrow-right"></i></h6>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <h6 class="fw-bold">85</h6>
+                                        <h6 class="fw-bold">95</h6>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <h6 class="fw-bold">100</h6>

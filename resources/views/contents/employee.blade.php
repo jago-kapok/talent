@@ -69,7 +69,7 @@
 	</div>
 
     <div class="modal fade" id="modalEmployee" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title" id="staticBackdropLabel">Pegawai</h3>
@@ -140,6 +140,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-5 col-form-label">Job Family</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_job_family" name="employee_job_family" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-md-6">
@@ -169,25 +177,17 @@
                                 </div>
                                 <div class="col-md-12 mb-4">
                                     <div class="row">
-                                        <label class="col-md-6 col-form-label">Job Family</label>
-                                        <div class="col-md-6">
-                                            <input id="employee_job_family" name="employee_job_family" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-4">
-                                    <div class="row">
-                                        <label class="col-md-6 col-form-label">Job Family</label>
-                                        <div class="col-md-6">
-                                            <input id="employee_job_grade" name="employee_job_grade" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-4">
-                                    <div class="row">
                                         <label class="col-md-6 col-form-label">Person Grade</label>
                                         <div class="col-md-6">
                                             <input id="employee_person_grade" name="employee_person_grade" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="row">
+                                        <label class="col-md-6 col-form-label">Job Grade</label>
+                                        <div class="col-md-6">
+                                            <input id="employee_job_grade" name="employee_job_grade" class="form-control">
                                         </div>
                                     </div>
                                 </div>
