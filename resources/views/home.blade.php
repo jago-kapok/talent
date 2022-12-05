@@ -114,7 +114,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_C1" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_C1"></canvas>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -135,7 +137,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_C2" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_C2"></canvas>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -156,7 +160,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_C3" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_C3"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +193,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_B1" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_B1"></canvas>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -208,7 +216,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_B2" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_B2"></canvas>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -229,7 +239,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_B3" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_B3"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -260,7 +272,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_A1" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_A1"></canvas>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -281,7 +295,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_A2" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_A2"></canvas>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -302,7 +318,9 @@
                                                 </ul>
                                             </div>
                                         </h5>
-                                        <div id="chart_A3" style="margin-bottom: -30px"></div>
+                                        <div class="chart-container" style="position: relative; height:125px">
+                                            <canvas id="chart_A3"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

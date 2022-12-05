@@ -39,529 +39,510 @@
 </script>
 
 <script>
-    var chart_A1 = {
-        series: [
-            @foreach ($dead_wood as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
-                },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
-            },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 0,
-            max: 95,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 0,
-            max: 99
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
-            }
-        }
-    };
-    
-    var chart_A2 = {
-        series: [
-            @foreach ($adequate_performer as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
-                },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
-            },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 96,
-            max: 100,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 0,
-            max: 99
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
-            }
-        }
-    };
+    const chart_A1 = document.getElementById('chart_A1');
 
-    var chart_A3 = {
-        series: [
-            @foreach ($reliable_performer as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
+    new Chart(chart_A1, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($dead_wood as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 0,
+                    max: 95,
                 },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
+                y: {
+                    display: false,
+                    min: 0,
+                    max: 99
+                }
             },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 100.1,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 0,
-            max: 99
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
             }
         }
-    };
+    });
 
-    var chart_B1 = {
-        series: [
-            @foreach ($under_performer as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
+    const chart_A2 = document.getElementById('chart_A2');
+
+    new Chart(chart_A2, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($adequate_performer as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 96,
+                    max: 110,
                 },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
+                y: {
+                    display: false,
+                    min: 0,
+                    max: 110
+                }
             },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 0,
-            max: 95,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 100,
-            max: 100
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
             }
         }
-    };
+    });
 
-    var chart_B2 = {
-        series: [
-            @foreach ($expected_performer as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
+    const chart_A3 = document.getElementById('chart_A3');
+
+    new Chart(chart_A3, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($reliable_performer as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 100.1,
                 },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
+                y: {
+                    display: false,
+                    min: 0,
+                    max: 110
+                }
             },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 96,
-            max: 100,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 100,
-            max: 100
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
             }
         }
-    };
+    });
 
-    var chart_B3 = {
-        series: [
-            @foreach ($key_contributor as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
+    const chart_B1 = document.getElementById('chart_B1');
+
+    new Chart(chart_B1, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($under_performer as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 0,
+                    max: 110,
                 },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
+                y: {
+                    display: false,
+                    min: 110,
+                    max: 110
+                }
             },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 100.1,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 100,
-            max: 100
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
             }
         }
-    };
+    });
 
-    var chart_C1 = {
-        series: [
-            @foreach ($possible_potential_star as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
+    const chart_B2 = document.getElementById('chart_B2');
+
+    new Chart(chart_B2, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($expected_performer as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 96,
+                    max: 110,
                 },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
+                y: {
+                    display: false,
+                    min: 110,
+                    max: 110
+                }
             },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 0,
-            max: 95,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 100.1
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
             }
         }
-    };
+    });
 
-    var chart_C2 = {
-        series: [
-            @foreach ($possible_future_star as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
+    const chart_B3 = document.getElementById('chart_B3');
+
+    new Chart(chart_B3, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($key_contributor as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 100.1
                 },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
+                y: {
+                    display: false,
+                    min: 110,
+                    max: 110
+                }
             },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 96,
-            max: 100,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 100.1
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
             }
         }
-    };
+    });
 
-    var chart_C3 = {
-        series: [
-            @foreach ($star as $val)
-                {
-                    name: "{{ strtoupper($val->employee_name) }}",
-                    data: [
-                        [
-                            {{ $val->performance_total }}, {{ $val->competency_total }}
-                        ]
-                    ]
+    const chart_C1 = document.getElementById('chart_C1');
+
+    new Chart(chart_C1, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($possible_potential_star as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 0,
+                    max: 110,
                 },
-            @endforeach
-        ],
-        chart: {
-            height: 125,
-            type: 'scatter',
-            toolbar: {
-                show: false
+                y: {
+                    display: false,
+                    min: 100.1
+                }
             },
-        },
-        grid: {
-            show: false
-        },
-        xaxis: {
-            min: 100.1,
-            tickAmount: 5,
-            tickPlacement: 'on',
-            position: 'bottom',
-            labels: {
-                show: false
-            },
-            axisBorder: {
-                show: false
-            },
-        },
-        yaxis: {
-            show: false,
-            min: 100.1
-        },
-        legend: {
-            show: false
-        },
-        tooltip: {
-            intersect: false,
-            custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                return (
-                    '<div class="row py-2 px-4">' +
-                        w.globals.seriesNames[dataPointIndex] +
-                        ' (P: ' + w.globals.seriesX[dataPointIndex][0] +
-                        ', K: ' + w.globals.series[dataPointIndex] + ')' +
-                    '</div>'
-                );
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
             }
         }
-    };
+    });
 
-    var chart_A1 = new ApexCharts(document.querySelector("#chart_A1"), chart_A1).render();
-    var chart_A2 = new ApexCharts(document.querySelector("#chart_A2"), chart_A2).render();
-    var chart_A3 = new ApexCharts(document.querySelector("#chart_A3"), chart_A3).render();
-    var chart_B1 = new ApexCharts(document.querySelector("#chart_B1"), chart_B1).render();
-    var chart_B2 = new ApexCharts(document.querySelector("#chart_B2"), chart_B2).render();
-    var chart_B3 = new ApexCharts(document.querySelector("#chart_B3"), chart_B3).render();
-    var chart_C1 = new ApexCharts(document.querySelector("#chart_C1"), chart_C1).render();
-    var chart_C2 = new ApexCharts(document.querySelector("#chart_C2"), chart_C2).render();
-    var chart_C3 = new ApexCharts(document.querySelector("#chart_C3"), chart_C3).render();
+    const chart_C2 = document.getElementById('chart_C2');
+
+    new Chart(chart_C2, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($possible_future_star as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 90,
+                    max: 110,
+                },
+                y: {
+                    display: false,
+                    min: 100.1
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const chart_C3 = document.getElementById('chart_C3');
+
+    new Chart(chart_C3, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                @foreach ($star as $val)
+                    {
+                        label: "{{ strtoupper($val->employee_name) }}",
+                        data: [
+                            [
+                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                            ]
+                        ],
+                        borderWidth: 5
+                    },
+                @endforeach
+            ]
+        },
+        options: {
+            events: ['click'],
+            scales: {
+                x: {
+                    display: false,
+                    min: 100.1,
+                },
+                y: {
+                    display: false,
+                    min: 100.1
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    padding: 10,
+                    titleFont: { size: 15 },
+                    bodyFont: { size: 15 },
+                    boxPadding: 10,
+                    boxWidth: 10,
+                    boxHeight: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].dataset.label;
+                        },
+                        label: function(context) {
+                            return "P: " + context.parsed.x + ", K: " + context.parsed.y;
+                        }
+                    }
+                }
+            }
+        }
+    });
 </script>
