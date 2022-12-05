@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Position;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -16,10 +17,12 @@ class EmployeeController extends Controller
     {
         $employee = Employee::all();
         $position = Position::all();
+        $department = Department::all();
 
         return view('contents.employee')
                 ->with('employee', $employee)
-                ->with('position', $position);
+                ->with('position', $position)
+                ->with('department', $department);
     }
 
     /*

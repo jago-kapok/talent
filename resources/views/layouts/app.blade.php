@@ -92,6 +92,9 @@
                   <a href="{{ route('employee') }}" class="sidebar-link"><span class="ms-4">&nbsp;&nbsp;Pegawai</span></a>
                 </li>
                 <li class="sidebar-item">
+                  <a href="{{ route('department') }}" class="sidebar-link"><span class="ms-4">&nbsp;&nbsp;Departemen</span></a>
+                </li>
+                <li class="sidebar-item">
                   <a href="{{ route('position') }}" class="sidebar-link"><span class="ms-4">&nbsp;&nbsp;Jabatan</span></a>
                 </li>
                 <li class="sidebar-item">
