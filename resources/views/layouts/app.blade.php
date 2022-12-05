@@ -32,6 +32,7 @@
 
     <!-- Charts -->
     <script src="{{ asset('js/apexcharts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- AOS -->
     <link href="{{ asset('css/aos.css') }}" rel="stylesheet">
