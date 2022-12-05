@@ -31,7 +31,8 @@ class HomeController extends Controller
 
         $employee                   = Employee::all();
         $employee_position          = DB::table('employee')->select('position.position_desc', DB::raw('COUNT(position.position_desc) as position_total'))
-                                        ->join('position', 'position.position_id', 'employee.position_id')->groupBy('employee.position_id')->get();
+                                        ->join('position', 'position.position_id', 'employee.position_id')
+                                        ->where('employee.deleted_at', NULL)->groupBy('employee.position_id')->get();
 
         // getResult(PMin, PMax, CMin, CMax)
 
