@@ -28,6 +28,7 @@
     <script src="{{ asset('js/notify.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
 
     <!-- Charts -->
     <script src="{{ asset('js/apexcharts.js') }}"></script>
@@ -64,7 +65,12 @@
                 <i class="bi-trophy-fill"></i> <span class="align-middle">Penilaian Pegawai</span>
               </a>
             </li>
-            <li class="sidebar-item {{ (request()->is('performance*')) || (request()->is('competency*')) ? 'active' : '' }}">
+            <li class="sidebar-item {{ (request()->is('department/show')) ? 'active' : '' }}">
+              <a class="sidebar-link" href="{{ route('organizational') }}">
+                <i class="bi-diagram-3"></i> <span class="align-middle">Struktur Organisasi</span>
+              </a>
+            </li>
+            <li class="sidebar-item {{ (request()->is('performance')) || (request()->is('competency')) ? 'active' : '' }}">
               <a data-bs-target="#history" data-bs-toggle="collapse" class="sidebar-link collapsed" aria-expanded="false">
                 <i class="bi-clock-history"></i> <span class="align-middle">Riwayat Penilaian</span>
                 <span class="sidebar-badge"><i class="bi-caret-down-fill"></i></span>
@@ -82,7 +88,7 @@
             <li class="sidebar-header">
               Pengaturan
             </li>
-            <li class="sidebar-item {{ (request()->is('employee*')) || (request()->is('position*')) ? 'active' : '' }}">
+            <li class="sidebar-item {{ (request()->is('employee*')) || (request()->is('position*')) || (request()->is('competency-item')) || (request()->is('department')) ? 'active' : '' }}">
               <a data-bs-target="#master" data-bs-toggle="collapse" class="sidebar-link collapsed" aria-expanded="false">
                 <i class="bi-clipboard-data-fill"></i> <span class="align-middle">Data Master</span>
                 <span class="sidebar-badge"><i class="bi-caret-down-fill"></i></span>

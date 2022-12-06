@@ -29,7 +29,7 @@
             </div>
             
             <div class="col-md-6 mb-2">
-                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#modalPosition">
+                <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#modalDepartment">
                     Tambah Jabatan
                 </button>
             </div>
@@ -42,6 +42,7 @@
                         <th width="20">No.</th>
                         <th width="100">Kode Departemen</th>
                         <th width="100">Nama Departemen</th>
+                        <th width="100">Departemen Head</th>
                         <th width="50">Pilihan</th>
                     </tr>
                 </thead>
@@ -51,6 +52,7 @@
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $data->department_code }}</td>
                             <td>{{ strtoupper($data->department_name) }}</td>
+                            <td>{{ strtoupper($data->department_head_name) }}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-primary" onclick="editRow('{{ $data->department_id }}')">
                                     <i class="bi-pencil"></i>
@@ -87,10 +89,21 @@
                                         <input id="department_code" name="department_code" class="form-control">
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <label class="col-md-6 col-form-label">Nama Departemen <span class="text-danger">*</span></label>
                                     <div class="col-md-6">
                                         <input id="department_name" name="department_name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-6 col-form-label">Departemen Head</label>
+                                    <div class="col-md-6">
+                                        <select id="department_head" name="department_head" class="form-select">
+                                            <option value="" selected>-</option>
+                                            @foreach ($department_head as $value)
+                                                <option value="{{ $value->department_id }}">{{ strtoupper($value->department_name) }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -107,6 +120,14 @@
 </div>
 
 <script>
+/* Reset Modal Form
+/* ======================================================== */
+
+$('#modalDepartment').on('hidden.bs.modal', function () {
+    $('#modalDepartment form')[0].reset();
+    $('#department_id').val("");
+});
+
 /* Konfigurasi DataTables
 /* ======================================================== */
 
@@ -192,6 +213,7 @@ function editRow(department_id)
                 document.getElementById('department_id').value = department_id;
                 document.getElementById('department_code').value = response.data.department.department_code;
                 document.getElementById('department_name').value = response.data.department.department_name;
+                document.getElementById('department_head').value = response.data.department.department_head;
             }
         }, (error) => {
             console.log(error.response.data.errors);

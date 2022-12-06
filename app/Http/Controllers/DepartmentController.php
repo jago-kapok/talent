@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
@@ -13,9 +14,11 @@ class DepartmentController extends Controller
 
     public function index()
     {
-        $department = Department::all();
+        $department = DB::table('department as d1')->select('d1.department_id', 'd1.department_code', 'd1.department_name', 'd2.department_name as department_head_name')
+                        ->leftJoin('department as d2', 'd1.department_head', 'd2.department_id')->orderBy('d1.department_name')->get();
+        $department_head = Department::all();
 
-        return view('contents.department')->with('department', $department);
+        return view('contents.department')->with('department', $department)->with('department_head', $department_head);
     }
 
     /*
@@ -56,4 +59,11 @@ class DepartmentController extends Controller
     /*
         ==============================================================
     */
+
+    public function show()
+    {
+        $department = Department::all();
+
+        return view('contents.organizational')->with('department', $department);
+    }
 }

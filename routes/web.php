@@ -37,9 +37,8 @@ Route::delete('/employee/delete/{id}', 'EmployeeController@destroy')->middleware
 
 Route::get('/department', 'DepartmentController@index')->middleware('auth')->name('department');
 Route::get('/department/{id}', 'DepartmentController@getById')->middleware('auth');
-Route::get('/department/detail/{id}', 'DepartmentController@detail')->middleware('auth');
+Route::get('/organizational', 'DepartmentController@show')->middleware('auth')->name('organizational');
 Route::post('/department', 'DepartmentController@store')->middleware('auth')->name('save-department');
-Route::post('/department/detail', 'DepartmentController@storeDetail')->middleware('auth');
 Route::delete('/department/delete/{id}', 'DepartmentController@destroy')->middleware('auth');
 
 Route::get('/position', 'PositionController@index')->middleware('auth')->name('position');
