@@ -42,6 +42,7 @@ Route::post('/department', 'DepartmentController@store')->middleware('auth')->na
 Route::delete('/department/delete/{id}', 'DepartmentController@destroy')->middleware('auth');
 
 Route::get('/position', 'PositionController@index')->middleware('auth')->name('position');
+Route::get('/position/{id}', 'PositionController@getById')->middleware('auth');
 Route::get('/position/detail/{id}', 'PositionController@detail')->middleware('auth');
 Route::post('/position', 'PositionController@store')->middleware('auth')->name('save-position');
 Route::post('/position/detail', 'PositionController@storeDetail')->middleware('auth');

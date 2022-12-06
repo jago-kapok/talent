@@ -9,7 +9,7 @@
                 <h6 class="text-black-50 mb-2 fw-bold">Data Pegawai</h6>
                 <div class="row">
                     <div class="text-center">
-                        <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" class="img-fluid rounded-circle mb-2" width="150">
+                        <img src="{{ asset('img/user.png') }}" class="img-fluid rounded-circle mb-2" width="150">
                         <br><span class="text-black fw-bold mb-3">{{ strtoupper($employee->employee_name) }}</span>
                         <br><span class="text-secondary fst-italic mb-3">{{ $employee->employee_code }}</span>
                         <br><span class="text-secondary mb-3">{{ $employee->position->position_desc }}</span>

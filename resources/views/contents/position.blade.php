@@ -40,6 +40,7 @@
                 <thead class="bg-app-table">
                     <tr>
                         <th width="20">No.</th>
+                        <th width="100">Departemen</th>
                         <th width="100">Nama Jabatan</th>
                         <th width="100">Skor Kompetensi</th>
                         <th width="50">Pilihan</th>
@@ -49,9 +50,13 @@
                     @foreach ($position as $key => $data)
                         <tr>
                             <td>{{ $key + 1 }}</td>
+                            <td>{{ isset($data->department) ? strtoupper($data->department->department_name) : '-' }}</td>
                             <td>{{ strtoupper($data->position_desc) }}</td>
                             <td>{{ $data->position_score }}</td>
                             <td>
+                                <button type="button" class="btn btn-sm btn-primary" onclick="editRow('{{ $data->position_id }}')">
+                                    <i class="bi-pencil"></i>
+                                </button>
                                 <a href="{{ url('position/detail').'/'.$data->position_id }}" class="btn btn-sm btn-warning">
                                     <i class="bi-list"></i>
                                 </a>
@@ -70,7 +75,7 @@
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="staticBackdropLabel">Jabatan (Posisi)</h3>
+                    <h3 class="modal-title" id="staticBackdropLabel">Jabatan</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
@@ -78,12 +83,24 @@
                     @csrf
 
                     <div class="modal-body">
+                        <input id="position_id" type="hidden" name="position_id">
                         <div class="row">
-                            <div class="col-md-12 mb-4">
-                                <div class="row">
+                            <div class="col-md-12">
+                                <div class="row mb-3">
                                     <label class="col-md-6 col-form-label">Nama Jabatan (Posisi) <span class="text-danger">*</span></label>
                                     <div class="col-md-6">
-                                        <input name="position_desc" class="form-control">
+                                        <input id="position_desc" name="position_desc" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-6 col-form-label">Departemen <span class="text-danger">*</span></label>
+                                    <div class="col-md-6">
+                                        <select id="department_id" name="department_id" class="form-select">
+                                            <option value="" selected>-</option>
+                                            @foreach ($department as $value)
+                                                <option value="{{ $value->department_id }}">{{ strtoupper($value->department_name) }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +117,14 @@
 </div>
 
 <script>
+/* Reset Modal Form
+/* ======================================================== */
+
+$('#modalPosition').on('hidden.bs.modal', function () {
+    $('#modalPosition form')[0].reset();
+    $('#position_id').val("");
+});
+
 /* Konfigurasi DataTables
 /* ======================================================== */
 
@@ -155,6 +180,36 @@ function submitForm() {
                 }).then((result) => {
                     window.location = "{{ url('position') }}";
                 });
+            }
+        }, (error) => {
+            console.log(error.response.data.errors);
+            
+            Swal.fire({
+                icon    : 'error',
+                title   : 'ERROR !',
+                text    : 'Terjadi kesalahan saat koneksi ke server',
+                showConfirmButton: true
+            });
+        });
+}
+
+/* Edit dari Database
+/* ======================================================== */
+
+function editRow(position_id)
+{
+    var myModal = new bootstrap.Modal(document.getElementById('modalPosition'), { keyboard: false });
+    myModal.show();
+
+    var url = "{{ url('position') }}" + "/" + position_id;
+
+    axios.get(url)
+        .then((response) => {
+            if (response.data.success == true)
+            {
+                document.getElementById('position_id').value = position_id;
+                document.getElementById('position_desc').value = response.data.position.position_desc;
+                document.getElementById('department_id').value = response.data.position.department_id;
             }
         }, (error) => {
             console.log(error.response.data.errors);

@@ -5,12 +5,12 @@
 <style>
 .department {
     white-space: pre-wrap;
-    width: 200px;
+    width: 280px;
     padding: 5px;
     color: #424242;
     font-weight: normal;
 }
-.talent {
+/*.talent {
     white-space:pre-wrap;
     width:120px;
     height:200px;
@@ -31,7 +31,7 @@
     background:white;
     width:40px;
     height:1px;
-}
+}*/
 </style>
 
 <div class="container-fluid" data-aos="fade-in">
@@ -58,27 +58,27 @@ var config = {
     type: 'organizational down', 
     defaultPoint: { 
         outline_width: 0, 
-        connectorLine: { width: 2, color: '#e0e0e0' }, 
+        connectorLine: { width: 2, color: '#aaa6a4' }, 
         annotation: { 
           asHTML: true, 
           label_text: 
-            '<div class="department" style="border-bottom:5px solid %color">' +
-                '<div class="d-flex">' +
+            '<div class="department">' +
+                '<div class="text-white rounded p-1 mb-1" style="background-color: %color"><b>%position</b></div>' +
+                '<div class="d-flex align-items-start">' +
                     '<div class="flex-shrink-0">' +
-                        '<img src="..." alt="...">' +
+                        '<img src="{{ asset("img/user.png") }}" alt="Avatar" class="rounded" width="70">' +
                     '</div>' +
-                    '<div class="flex-grow-1 ms-3">' +
-                        '<b>%position</b>' +
+                    '<div class="flex-grow-1 ms-2" style="text-align: left">' +
                         '<span class="fs-5">%name</span><br>' +
                         '<span class="text-primary"><i><b>%role</b></i></span><br>' +
-                        '<h5 class="m-1">' +
-                            '<span class="badge bg-secondary px-2 py-1">PG : </span>&nbsp;' +
-                            '<span class="badge bg-secondary px-2 py-1">JG : </span>&nbsp;' +
-                            '<span class="badge bg-secondary px-2 py-1">JF : </span>' +
+                        '<h5 class="my-1">' +
+                            '<span class="badge bg-secondary px-2 py-1">PG : %pg</span>&nbsp;' +
+                            '<span class="badge bg-secondary px-2 py-1">JG : %jg</span>&nbsp;' +
+                            '<span class="badge bg-secondary px-2 py-1">JF : %jf</span>' +
                         '</h5>' +
                     '</div>' +
                 '</div>' +                
-                '<h4><span class="badge rounded-pill bg-info px-2 py-1 mt-1">%talent</span></h4>' +
+                '<div class="bg-success text-white rounded-pill mt-1 p-1">%talent</div>' +
             '</div>'
         } 
     },
@@ -89,16 +89,19 @@ var config = {
             points: [
                 @foreach ($department as $data)
                 {
-                    name: 'Lorem Ipsum', 
+                    name: '{{ ucwords(strtolower($data->employee_name)) }}', 
                     id: '{{ $data->department_id }}',
                     parent: '{{ $data->department_head }}',
                     attributes: { 
                         position: '{{ strtoupper($data->department_name) }}<br>', 
                         talent: 'STAR',
-                        role: 'VICE PRESIDENT'
+                        role: '{{ strtoupper($data->position_desc) }}',
+                        pg: '{{ $data->employee_person_grade }}',
+                        jg: '{{ $data->employee_job_grade }}',
+                        jf: '{{ $data->employee_job_family }}'
                     }, 
                     label_style_fontSize: 12, 
-                    color: 'white'
+                    color: '{{ $data->department_color }}'
                 },
                 @endforeach
             ]

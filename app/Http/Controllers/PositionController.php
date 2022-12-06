@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,9 +15,10 @@ class PositionController extends Controller
 
     public function index()
     {
-        $position = Position::all();
+        $department     = Department::all();
+        $position       = Position::all();
 
-        return view('contents.position')->with('position', $position);
+        return view('contents.position')->with('position', $position)->with('department', $department);
     }
 
     /*
@@ -27,9 +29,20 @@ class PositionController extends Controller
     {
         $input_form = $request->all();
 
-        $position = Position::create($input_form);
+        $position = Position::updateOrCreate(['position_id' => $request->input('position_id')], $input_form);
 
         return response()->json(['success' => true]);
+    }
+
+    /*
+        ==============================================================
+    */
+
+    public function getById($position_id)
+    {
+        $position = Position::find($position_id);
+
+        return response()->json(['success' => true, 'position' => $position]);
     }
 
     /*

@@ -64,12 +64,12 @@
                 x: {
                     display: false,
                     min: 0,
-                    max: 95,
+                    max: 105,
                 },
                 y: {
                     display: false,
                     min: 0,
-                    max: 99
+                    max: 110
                 }
             },
             plugins: {
@@ -120,7 +120,7 @@
             scales: {
                 x: {
                     display: false,
-                    min: 96,
+                    min: 85,
                     max: 110,
                 },
                 y: {
@@ -290,7 +290,7 @@
             scales: {
                 x: {
                     display: false,
-                    min: 96,
+                    min: 85,
                     max: 110,
                 },
                 y: {
@@ -459,7 +459,7 @@
             scales: {
                 x: {
                     display: false,
-                    min: 90,
+                    min: 85,
                     max: 110,
                 },
                 y: {

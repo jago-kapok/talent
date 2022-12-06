@@ -62,7 +62,7 @@ class DepartmentController extends Controller
 
     public function show()
     {
-        $department = Department::all();
+        $department = Department::getOrganizational();
 
         return view('contents.organizational')->with('department', $department);
     }
