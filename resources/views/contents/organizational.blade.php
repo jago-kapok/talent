@@ -10,7 +10,7 @@
     color: #424242;
     font-weight: normal;
 }
-/*.talent {
+.units{
     white-space:pre-wrap;
     width:120px;
     height:200px;
@@ -19,19 +19,19 @@
     text-align:center;
     font-size:10px;
 }
-.talent li {
+.units li{
     list-style-type:none;
     padding:5px;
     margin:4px 0;
     border-radius:5px;
 }
-.talent ul { padding:0; }
-.talent hr {
+.units ul{  padding:0;}
+.units hr{
     border:none;
     background:white;
     width:40px;
     height:1px;
-}*/
+}
 </style>
 
 <div class="container-fluid" data-aos="fade-in">
@@ -66,7 +66,7 @@ var config = {
                 '<div class="text-white rounded p-1 mb-1" style="background-color: %color"><b>%position</b></div>' +
                 '<div class="d-flex align-items-start">' +
                     '<div class="flex-shrink-0">' +
-                        '<img src="{{ asset("img/user.png") }}" alt="Avatar" class="rounded" width="70">' +
+                        '<img src="{{ url('') }}/img/%avatar" alt="Avatar" class="rounded" width="70">' +
                     '</div>' +
                     '<div class="flex-grow-1 ms-2" style="text-align: left">' +
                         '<span class="fs-5">%name</span><br>' +
@@ -98,7 +98,8 @@ var config = {
                         role: '{{ strtoupper($data->position_desc) }}',
                         pg: '{{ $data->employee_person_grade }}',
                         jg: '{{ $data->employee_job_grade }}',
-                        jf: '{{ $data->employee_job_family }}'
+                        jf: '{{ $data->employee_job_family }}',
+                        avatar: '{{ $data->employee_name != "" ? "user.png" : "user-empty.png" }}'
                     }, 
                     label_style_fontSize: 12, 
                     color: '{{ $data->department_color }}'
