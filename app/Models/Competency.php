@@ -46,7 +46,7 @@ class Competency extends Model
         return $result;
     }
 
-    public function getResult($_pmin, $_pmax, $_cmin, $_cmax)
+    public function getResult($_pmin, $_pmax, $_cmin, $_cmax, $code)
     {
         $result = DB::table('view_competency_result')
                 ->select('employee.employee_name', 'position.position_desc', 'view_performance_result.performance_total',
@@ -56,6 +56,7 @@ class Competency extends Model
                 ->leftJoin('position', 'position.position_id', '=', 'employee.position_id')
                 ->whereBetween('performance_total', [$_pmin, $_pmax])
                 ->whereBetween('competency_percent', [$_cmin, $_cmax])
+                ->where('position.position_desc', 'like', $code.'%')
                 ->get();
 
         return $result;

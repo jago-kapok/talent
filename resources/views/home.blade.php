@@ -73,9 +73,21 @@
         <div class="col-md-9 mb-2">
             <div class="card" data-aos="zoom-in">
                 <div class="row justify-content-center">
-                    <div class="col-md-12 mb-lg-0">
-                        <div class="container-fluid">
-                            <p class="text-smart fst-italic text-center mt-3">9-BOX TALENT MANAGEMENT</p>
+                    <div class="col-md-12 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <p class="text-smart fst-italic text-left mx-2">9-BOX TALENT MANAGEMENT</p>
+                            <div class="p-2">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                        <i class="bi-filter"></i>&nbsp;&nbsp;Filter
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @foreach ($employee_position as $value)
+                                            <li><a class="dropdown-item" href="#">{{ strtoupper($value->position_desc) }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     

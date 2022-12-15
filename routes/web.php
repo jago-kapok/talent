@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
+Route::get('/home/{id?}', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/evaluation', 'EvaluationController@index')->middleware('auth')->name('evaluation');
 Route::get('/evaluation-data', 'EvaluationController@getData')->middleware('auth')->name('evaluation-data');
