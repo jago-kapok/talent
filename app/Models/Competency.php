@@ -71,7 +71,7 @@ class Competency extends Model
 
     public function getLastCompetencyHistory($employee_id)
     {
-        $result = DB::table('view_competency_result_history')->first();
+        $result = DB::table('view_competency_history')->where('employee_id', $employee_id)->first();
 
         return $result;
     }

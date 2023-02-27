@@ -5,7 +5,7 @@
 <style>
 .department {
     white-space: pre-wrap;
-    width: 280px;
+    width: 325px;
     padding: 5px;
     color: #424242;
     font-weight: normal;
@@ -31,6 +31,42 @@
     background:white;
     width:40px;
     height:1px;
+}
+
+.cascading-right {
+    margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+    .cascading-right {
+        margin-right: 0;
+    }
+}
+
+.bg-place {
+    position: relative;
+    z-index: 1;
+}
+
+.bg-body {
+    background-color: #E5E5E5;
+    left: 2.5em;
+    width: 215px;
+    text-align: left;
+}
+
+.tx-body {
+    margin-left: 25px;
+}
+
+.bg-title {
+    color: white;
+    width: 190px;
+    margin-left: 2em;
+    margin-top: 1em;
+    text-align: left;
+    padding: .2em 1em .2em 2em;
+    border-top-right-radius: 25px;
 }
 </style>
 
@@ -61,24 +97,29 @@ var config = {
         connectorLine: { width: 2, color: '#aaa6a4' }, 
         annotation: { 
           asHTML: true, 
-          label_text: 
+          label_text:
             '<div class="department">' +
-                '<div class="text-white rounded p-1 mb-1" style="background-color: %color"><b>%position</b></div>' +
-                '<div class="d-flex align-items-start">' +
-                    '<div class="flex-shrink-0">' +
-                        '<img src="{{ url('') }}/img/%avatar" alt="Avatar" class="rounded" width="70">' +
+                '<div class="d-flex bd-highlight">' +
+                    '<div class="cascading-right bg-place">' +
+                        '<img src="{{ asset("img") }}/%avatar" alt="Avatar" class="img-fluid rounded-circle" width="120" style="border: 5px solid %color">' +
                     '</div>' +
-                    '<div class="flex-grow-1 ms-2" style="text-align: left">' +
-                        '<span class="fs-5">%name</span><br>' +
-                        '<span class="text-primary"><i><b>%role</b></i></span><br>' +
-                        '<h5 class="my-1">' +
-                            '<span class="badge bg-secondary px-2 py-1">PG : %pg</span>&nbsp;' +
-                            '<span class="badge bg-secondary px-2 py-1">JG : %jg</span>&nbsp;' +
-                            '<span class="badge bg-secondary px-2 py-1">JF : %jf</span>' +
-                        '</h5>' +
+                    '<div>' +
+                        '<div class="bg-title" style="background-color: %color">' +
+                            '<div><a href="{{ route("employee") }}"><b>%name</b></a></div>' +
+                        '</div>' +
+                        '<div class="card bg-body p-1">' +
+                            '<div class="tx-body">' +
+                                '<a href="{{ route("department") }}"><b>%position</b></a>' +
+                                '<h5 class="my-1">' +
+                                    '<span class="badge bg-secondary px-2 py-1">PG : %pg</span>&nbsp;' +
+                                    '<span class="badge bg-secondary px-2 py-1">JG : %jg</span>&nbsp;' +
+                                    '<span class="badge bg-secondary px-2 py-1">JF : %jf</span>' +
+                                '</h5>' +
+                                '<h6 class="text-success fw-bold mb-0 mt-1"><a href="{{ route("evaluation") }}">%talent</a></h6>' +
+                            '</div>' +
+                        '</div>' +
                     '</div>' +
-                '</div>' +                
-                '<div class="bg-success text-white rounded-pill mt-1 p-1">%talent</div>' +
+                '</div>' +
             '</div>'
         } 
     },
@@ -93,7 +134,7 @@ var config = {
                     id: '{{ $data->department_id }}',
                     parent: '{{ $data->department_head }}',
                     attributes: { 
-                        position: '{{ strtoupper($data->department_name) }}<br>', 
+                        position: '{{ strtoupper(substr($data->department_name, 0, 22)) }}<br>', 
                         talent: 'STAR',
                         role: '{{ strtoupper($data->position_desc) }}',
                         pg: '{{ $data->employee_person_grade }}',

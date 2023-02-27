@@ -238,8 +238,7 @@
                 },
                 y: {
                     display: false,
-                    min: 110,
-                    max: 110
+                    min: 99.99
                 }
             },
             plugins: {
@@ -295,8 +294,7 @@
                 },
                 y: {
                     display: false,
-                    min: 110,
-                    max: 110
+                    min: 99.99
                 }
             },
             plugins: {
@@ -334,7 +332,8 @@
                         label: "{{ strtoupper($val->employee_name) }}",
                         data: [
                             [
-                                {{ $val->performance_total }}, {{ $val->competency_total }}
+                                // {{ $val->performance_total }}, {{ $val->competency_total }}
+                                103, 100
                             ]
                         ],
                         borderWidth: 5
@@ -351,8 +350,7 @@
                 },
                 y: {
                     display: false,
-                    min: 110,
-                    max: 110
+                    min: 99.99
                 }
             },
             plugins: {

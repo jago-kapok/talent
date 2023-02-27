@@ -17,7 +17,7 @@ class Performance extends Model
 
     public function getLastPerformance($employee_id, $year)
     {
-        $result = DB::table('performance_result')->select(DB::raw('ROUND(AVG( performance_result )) AS performance_total'))
+        $result = DB::table('performance_result')->select(DB::raw('ROUND(AVG( performance_result ), 2) AS performance_total'))
                         ->where('employee_id', $employee_id)
                         ->whereRaw('performance_year BETWEEN ? AND ?', [$year - 3, $year])
                         ->first();

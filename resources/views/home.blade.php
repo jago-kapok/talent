@@ -83,7 +83,7 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         @foreach ($employee_position as $value)
-                                            <li><a class="dropdown-item" href="#">{{ strtoupper($value->position_desc) }}</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('home').'/'.$value->position_desc }}">{{ strtoupper($value->position_desc) }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

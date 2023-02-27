@@ -27,7 +27,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index($code = '')
-    {        
+    {
         $password_match = Auth::user()->level == 1 && (Hash::check('admin123', Auth::user()->password)) ? 1 : 0;
 
         $employee          = Employee::all();
@@ -43,12 +43,12 @@ class HomeController extends Controller
         $reliable_performer         = Competency::getResult(100.1, 200, 0, 99, $code);
         $under_performer            = Competency::getResult(0, 95, 100, 100, $code);
         $expected_performer         = Competency::getResult(96, 100, 100, 100, $code);
-        $key_contributor            = Competency::getResult(100.1, 200, 100, 100, $code);
+        $key_contributor            = Competency::getResult(100, 200, 100, 100, $code);
         $possible_potential_star    = Competency::getResult(0, 95, 100.1, 200, $code);
         $possible_future_star       = Competency::getResult(96, 100, 100.1, 200, $code);
         $star                       = Competency::getResult(100.1, 200, 100.1, 200, $code);
 
-        // dd($employee_position);
+        // dd($key_contributor);
 
         return view('home')
                 ->with('password_match', $password_match)

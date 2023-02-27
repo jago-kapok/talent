@@ -55,29 +55,29 @@
                             <td>{{ $data->performance_total }}</td>
                             <td>{{ round($data->competency_total, 0) }}%</td>
                             <td>
-                                @if ($data->performance_total <= 85)
-                                    @if ($data->competency_total <= 75)
+                                @if ($data->performance_total < 95)
+                                    @if ($data->competency_total < 100)
                                         <span class="badge bg-danger">Dead Wood</span>
-                                    @elseif ($data->competency_total > 75 && $data->competency_total <= 85)
-                                        <span class="badge bg-success">Under Performer</span>
-                                    @else
+                                    @elseif ($data->competency_total > 100)
                                         <span class="badge bg-success">Possible Potential Star</span>
-                                    @endif
-                                @elseif ($data->performance_total > 85 && $data->performance_total <= 100)
-                                    @if ($data->competency_total <= 75)
-                                        <span class="badge bg-info">Adequate Performer</span>
-                                    @elseif ($data->competency_total > 75 && $data->competency_total <= 85)
-                                        <span class="badge bg-primary">Expected Performer</span>
                                     @else
+                                        <span class="badge bg-success">Under Performer</span>
+                                    @endif
+                                @elseif ($data->performance_total >= 95 && $data->performance_total < 100)
+                                    @if ($data->competency_total < 100)
+                                        <span class="badge bg-info">Adequate Performer</span>
+                                    @elseif ($data->competency_total > 100)
                                         <span class="badge bg-secondary">Possible Future Star</span>
+                                    @else
+                                        <span class="badge bg-primary">Expected Performer</span>
                                     @endif
                                 @else
-                                    @if ($data->competency_total <= 75)
+                                    @if ($data->competency_total < 100)
                                         <span class="badge bg-info">Reliable Performer</span>
-                                    @elseif ($data->competency_total > 75 && $data->competency_total <= 85)
-                                        <span class="badge bg-secondary">Key Contributor</span>
-                                    @else
+                                    @elseif ($data->competency_total > 100)
                                         <span class="badge bg-warning">Star</span>
+                                    @else
+                                        <span class="badge bg-secondary">Key Contributor</span>
                                     @endif
                                 @endif
                             </td>
